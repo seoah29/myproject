@@ -2,12 +2,14 @@ package com.my.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class MyprojectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MyprojectApplication.class, args);
+		System.out.println("프로젝트 실행");
 	}
 
 }

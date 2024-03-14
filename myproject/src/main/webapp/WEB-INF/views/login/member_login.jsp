@@ -21,17 +21,20 @@
 	</c:if>
 
 	<!-- 로그인 폼 -->
-	<form action="/login" method="post">
+	<form action="/member/login" method="post">
 		<div>
 			<label for="username">Username:</label> <input type="text"
-				id="username" name="username" required>
+				id="username" name="memberId" required>
 		</div>
 		<div>
 			<label for="password">Password:</label> <input type="password"
-				id="password" name="password" required>
+				id="password" name="memberPasswd" required>
 		</div>
 		<div>
 			<button type="submit">Log in</button>
+		</div>
+		<div>
+			<a href="${pageContext.request.contextPath}/member/join">회원가입</a>
 		</div>
 		<!-- Spring Security가 요구하는 CSRF 토큰 필드 -->
 		<input type="hidden" name="${_csrf.parameterName}"

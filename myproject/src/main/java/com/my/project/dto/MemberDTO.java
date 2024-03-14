@@ -2,6 +2,10 @@ package com.my.project.dto;
 
 import java.time.LocalDate;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.my.project.domain.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +15,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor // 기본생성자 자동으로 생성
 public class MemberDTO {
@@ -34,12 +37,41 @@ public class MemberDTO {
 		return MemberDTO.builder()
 				.memberId(member.getMemberId())
 				.memberPasswd(member.getMemberPasswd())
-				.memberNickname(member.getMemberNickname()).memberEmail(member.getMemberEmail())
+				.memberNickname(member.getMemberNickname())
+				.memberEmail(member.getMemberEmail())
 				.memberHp1(member.getMemberHp1())
 				.memberHp2(member.getMemberHp2())
 				.memberHp3(member.getMemberHp3())
 				.memberAdress(member.getMemberAdress())
 				.joinDate(member.getJoinDate())
+				.build();
+	}
+	
+	@Builder
+    public MemberDTO(String memberId, String memberPasswd, String memberNickname, String memberEmail,
+    		String memberHp1, String memberHp2, String memberHp3, String memberAdress, LocalDate joinDate) {
+        this.memberId = memberId;
+        this.memberPasswd = memberPasswd;
+        this.memberNickname = memberNickname;
+        this.memberEmail = memberEmail;
+        this.memberHp1 = memberHp1;
+        this.memberHp2 = memberHp2;
+        this.memberHp3 = memberHp3;
+        this.memberAdress = memberAdress;
+        this.joinDate = joinDate;
+    }
+	
+	public Member toDTO() {
+		return Member.builder()
+				.memberId(memberId)
+                .memberPasswd(new BCryptPasswordEncoder().encode(memberPasswd))
+                .memberNickname(memberNickname)
+                .memberEmail(memberEmail)
+				.memberHp1(memberHp1)
+				.memberHp2(memberHp2)
+				.memberHp3(memberHp3)
+				.memberAdress(memberAdress)
+				.joinDate(joinDate)
 				.build();
 	}
 

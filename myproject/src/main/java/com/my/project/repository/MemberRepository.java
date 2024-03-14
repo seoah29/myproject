@@ -1,14 +1,14 @@
 package com.my.project.repository;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.my.project.domain.Member;
+import com.my.project.dto.MemberDTO;
 
 @Repository
-public interface UserRepository extends JpaRepository<Member, Integer> {
+public interface MemberRepository extends JpaRepository<Member, Integer> {
 
-    Optional<Member> findByMemberId(String memberId);
+	void save(MemberDTO dto);
+
 }

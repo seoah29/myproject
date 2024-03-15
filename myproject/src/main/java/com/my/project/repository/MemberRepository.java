@@ -9,6 +9,10 @@ import com.my.project.dto.MemberDTO;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Integer> {
 
+	// 회원가입
 	void save(MemberDTO dto);
+	
+	// id 중복체크
+	boolean existsByMemberId(String memberId);
 
 }

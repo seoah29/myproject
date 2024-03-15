@@ -14,11 +14,14 @@ public class MemberService {
 	@Autowired
 	private MemberRepository memRepository;
 	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
+	// 회원가입
 	public void joinMember(MemberDTO dto) {
 		Member member = dto.toDTO();
 		memRepository.save(member);
 	}
+	
+	// id 중복체크
+	public boolean checkIdDuplicate(String memberId) {
+        return memRepository.existsByMemberId(memberId);
+    }
 }

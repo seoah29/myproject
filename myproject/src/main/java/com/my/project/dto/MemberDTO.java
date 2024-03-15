@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import com.my.project.domain.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -58,7 +56,7 @@ public class MemberDTO {
         this.memberHp2 = memberHp2;
         this.memberHp3 = memberHp3;
         this.memberAdress = memberAdress;
-        this.joinDate = joinDate;
+        this.joinDate = LocalDate.now();
     }
 	
 	public Member toDTO() {
@@ -85,5 +83,6 @@ public class MemberDTO {
 		this.memberHp3 = req.getParameter("memberHp3");
 		this.memberAdress = req.getParameter("sample6_address") + "/" + req.getParameter("sample6_detailAddress") + "/"
 				+ req.getParameter("sample6_extraAddress");
+		this.joinDate = LocalDate.now();
 	}
 }

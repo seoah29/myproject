@@ -10,9 +10,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Member {
 
 	@Id 
@@ -32,6 +34,8 @@ public class Member {
     
     private LocalDate joinDate;
     
+    private LocalDate memberDeletedate;
+    
     public Member(MemberDTO dto) {
     	
     	this.memberNum = dto.getMemberNum();
@@ -47,7 +51,7 @@ public class Member {
     
     @Builder
     public Member(String memberId, String memberPasswd, String memberNickname, String memberEmail, 
-    		String memberHp1, String memberHp2, String memberHp3, String memberAdress, LocalDate joinDate) {
+    		String memberHp1, String memberHp2, String memberHp3, String memberAdress, LocalDate joinDate, LocalDate memberDeletedate) {
         this.memberId = memberId;
         this.memberPasswd = memberPasswd;
         this.memberNickname = memberNickname;
@@ -57,5 +61,6 @@ public class Member {
         this.memberHp3 = memberHp3;
         this.memberAdress = memberAdress;
         this.joinDate = joinDate;
+        this.memberDeletedate = memberDeletedate;
     }
 }

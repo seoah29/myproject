@@ -53,6 +53,13 @@ dependencies {
     // security
     implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.security:spring-security-taglibs' 
+	
+	// Spring Security OAuth2 Client
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    
+    // Spring Security OAuth2 Resource Server (필요한 경우)
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 }
 
 tasks.named('test') {

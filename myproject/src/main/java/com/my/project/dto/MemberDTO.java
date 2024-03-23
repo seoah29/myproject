@@ -30,6 +30,8 @@ public class MemberDTO {
 	private String memberAdress;
 
 	private LocalDate joinDate;
+	
+	private LocalDate memberDeletedate;
 
 	public static MemberDTO toDTO(Member member) {
 		return MemberDTO.builder()
@@ -57,6 +59,7 @@ public class MemberDTO {
         this.memberHp3 = memberHp3;
         this.memberAdress = memberAdress;
         this.joinDate = LocalDate.now();
+        this.memberDeletedate = LocalDate.now();
     }
 	
 	public Member toDTO() {
@@ -70,6 +73,7 @@ public class MemberDTO {
 				.memberHp3(memberHp3)
 				.memberAdress(memberAdress)
 				.joinDate(joinDate)
+				.memberDeletedate(memberDeletedate)
 				.build();
 	}
 
@@ -84,5 +88,6 @@ public class MemberDTO {
 		this.memberAdress = req.getParameter("sample6_address") + "/" + req.getParameter("sample6_detailAddress") + "/"
 				+ req.getParameter("sample6_extraAddress");
 		this.joinDate = LocalDate.now();
+		this.memberDeletedate = LocalDate.now();
 	}
 }

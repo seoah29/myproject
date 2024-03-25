@@ -12,9 +12,8 @@
 		<h1>Welcome to My Blog</h1>
 		<nav>
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/blog">myblog</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/blog/post">post</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -22,7 +21,6 @@
 	<main>
 		<section>
 			<h2>Recent Posts</h2>
-			<!-- Blog posts go here -->
 		</section>
 	</main>
 

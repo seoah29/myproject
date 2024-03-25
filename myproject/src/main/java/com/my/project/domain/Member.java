@@ -36,6 +36,8 @@ public class Member {
     
     private LocalDate memberDeletedate;
     
+    private boolean isSocial;
+    
     public Member(MemberDTO dto) {
     	
     	this.memberNum = dto.getMemberNum();

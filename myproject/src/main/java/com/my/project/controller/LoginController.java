@@ -26,8 +26,8 @@ public class LoginController {
 		return "login/member_login";
 	}
 	
-	@PostMapping("/login")
-	public String login(HttpServletRequest req) {
-		return "main/main";
-	}
+//	@PostMapping("/login")
+//	public String login(HttpServletRequest req) {
+//		return "main/main";
+//	}
 }

@@ -49,7 +49,12 @@ public class SecurityConfig {
 				.headers().frameOptions().disable();
 
 		http.formLogin(login -> login.loginPage("/member/login").loginProcessingUrl("/member/login")
-				.usernameParameter("memberId").passwordParameter("memberPasswd").defaultSuccessUrl("/", true))
+				.usernameParameter("memberId").passwordParameter("memberPasswd").defaultSuccessUrl("/", true)
+				.successHandler((request, response, authentication) -> {
+	                // 로그인 성공 후 처리할 로직
+	                // 예: 성공 로그를 남기거나, 세션에 정보를 추가
+	                response.sendRedirect("/main");
+				}))
 				// 로그아웃 설정
 				.logout(logout -> logout
 						// 로그아웃 요청을 처리할 URL 설정
@@ -63,7 +68,7 @@ public class SecurityConfig {
 						})
 						// 로그아웃 성공 핸들러 추가 (리다이렉션 처리)
 						.logoutSuccessHandler((request, response, authentication) -> response.sendRedirect("/main"))
-						// 로그아웃 시 쿠키 삭제 설정 (예: "remember-me" 쿠키 삭제)
+						// 로그아웃 시 쿠키 삭제 설정 
 						.deleteCookies("remember-me"));
 		return http.build();
 	}

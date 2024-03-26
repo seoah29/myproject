@@ -9,6 +9,7 @@
 <script>
 $(document).ready(function() {
 	var idChecked = false;
+	var nicknameChecked = false;
 
     $("#checkIdDuplicate").click(function() {
         var memberId = $("#memberId").val();
@@ -37,6 +38,35 @@ $(document).ready(function() {
             error: function(xhr, status, error) {
                 $("#idCheckResult").html("아이디 중복 체크 중 오류가 발생했습니다. 서버 상태를 확인해주세요.").css("color", "red");
                 idChecked = false;
+            }
+        });
+    });
+    
+    $("#checkNicknameDuplicate").click(function() {
+        var memberNickname = $("#memberNickname").val();
+        if (!memberNickname) {
+            $("#nicknameCheckResult").html("닉네임을 입력해 주세요.").css("color", "red");
+            nicknameChecked = false;
+            return;
+        }
+
+        // 실제 AJAX 요청에 맞는 URL로 변경
+        var contextPath = "${pageContext.request.contextPath}";
+        $.ajax({
+            url: contextPath + '/member/nickname-verification/' + memberNickname,
+            type: 'POST',
+            success: function(response) {
+                if (response === "Y") {
+                    $("#nicknameCheckResult").html("이미 사용중인 닉네임입니다.").css("color", "red");
+                    nicknameChecked = false;
+                } else {
+                    $("#nicknameCheckResult").html("사용 가능한 닉네임입니다.").css("color", "green");
+                    nicknameChecked = true;
+                }
+            },
+            error: function(xhr, status, error) {
+                $("#nicknameCheckResult").html("닉네임 중복 체크 중 오류가 발생했습니다. 서버 상태를 확인해주세요.").css("color", "red");
+                nicknameChecked = false;
             }
         });
     });
@@ -75,6 +105,11 @@ $(document).ready(function() {
             event.preventDefault();
             return;
         }
+        if (!nicknameChecked) {
+            alert("닉네임 중복 체크를 해주세요.");
+            event.preventDefault();
+            return;
+        }
         if ($("#passwordValidationResult").text() !== "유효한 비밀번호입니다." || $("#passwordMatchAlert").text() === "비밀번호가 일치하지 않습니다.") {
             alert("비밀번호 조건을 만족시키지 못했습니다.");
             event.preventDefault();
@@ -108,6 +143,8 @@ $(document).ready(function() {
 		<div>
 			<label for="memberNickname">닉네임:</label> <input type="text"
 				id="memberNickname" name="memberNickname" required>
+			<button type="button" id="checkNicknameDuplicate">중복 체크</button>
+			<div id="nicknameCheckResult"></div>
 		</div>
 		<div>
 			<label for="memberEmail">이메일:</label> <input type="email"

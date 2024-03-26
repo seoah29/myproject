@@ -26,8 +26,13 @@ public class LoginController {
 		return "login/member_login";
 	}
 	
-//	@PostMapping("/login")
-//	public String login(HttpServletRequest req) {
-//		return "main/main";
-//	}
+	@GetMapping("/id/find")
+	public String idCheck() {
+		return "login/member_id";
+	}
+	
+	@GetMapping("/passwd/find")
+	public String passwdCheck() {
+		return "login/member_passwd";
+	}
 }

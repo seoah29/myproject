@@ -36,6 +36,12 @@
 		<div>
 			<a href="${pageContext.request.contextPath}/member/join">회원가입</a>
 		</div>
+		<div>
+			<a href="${pageContext.request.contextPath}/member/id/find">아이디 찾기</a>
+		</div>
+		<div>
+			<a href="${pageContext.request.contextPath}/member/passwd/find">비밀번호 찾기</a>
+		</div>
 		<!-- Spring Security가 요구하는 CSRF 토큰 필드 -->
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />

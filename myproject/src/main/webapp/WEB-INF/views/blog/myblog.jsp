@@ -13,7 +13,10 @@
 		<nav>
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/member/blog">myblog</a></li>
-				<li><a href="${pageContext.request.contextPath}/member/blog/post">post</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/member/blog/post">post</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/member/chat">chat</a></li>
 			</ul>
 		</nav>
 	</header>

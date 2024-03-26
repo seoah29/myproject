@@ -18,14 +18,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/member")
 public class JoinController {
-	
+
 	private final MemberService memberService;
 
 	@GetMapping("/join")
 	public String join() {
 		return "login/member_join";
 	}
-	
+
 	@PostMapping("/join")
 	public String join(HttpServletRequest req) {
 		MemberDTO dto = new MemberDTO(req);
@@ -33,11 +33,18 @@ public class JoinController {
 		memberService.joinMember(dto);
 		return "login/member_login";
 	}
-	
+
 	// id 중복체크
 	@PostMapping("/id-verification/{memberId}")
 	public ResponseEntity<?> checkMemberIdDuplicate(@PathVariable("memberId") String memberId) {
-	    boolean isDuplicate = memberService.checkIdDuplicate(memberId);
-	    return ResponseEntity.ok(isDuplicate ? "Y" : "N");
+		boolean isDuplicate = memberService.checkIdDuplicate(memberId);
+		return ResponseEntity.ok(isDuplicate ? "Y" : "N");
+	}
+
+	// nickname 중복체크
+	@PostMapping("/nickname-verification/{memberNickname}")
+	public ResponseEntity<?> checkMemberNicknameDuplicate(@PathVariable("memberNickname") String memberNickname) {
+		boolean isDuplicate = memberService.checkNicknameDuplicate(memberNickname);
+		return ResponseEntity.ok(isDuplicate ? "Y" : "N");
 	}
 }

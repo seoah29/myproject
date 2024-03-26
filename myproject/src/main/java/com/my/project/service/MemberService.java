@@ -43,4 +43,9 @@ public class MemberService {
 	private MemberDTO convertEntityToDto(Member member) {
 		return null;
 	}
+
+	// nickname 중복체크
+	public boolean checkNicknameDuplicate(String memberNickname) {
+		return memRepository.existsByMemberId(memberNickname);
+	}
 }

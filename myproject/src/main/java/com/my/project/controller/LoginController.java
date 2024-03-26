@@ -35,4 +35,9 @@ public class LoginController {
 	public String passwdCheck() {
 		return "login/member_passwd";
 	}
+	
+	@GetMapping("/myPage")
+	public String myPage() {
+		return "mypage/mypage";
+	}
 }

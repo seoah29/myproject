@@ -26,6 +26,9 @@
 				<button type="button"
 					onclick="location.href='${pageContext.request.contextPath}/member/blog'">My
 					Blog</button>
+				<button type="button"
+					onclick="location.href='${pageContext.request.contextPath}/member/myPage'">My
+					Page</button>
 				<form action="${pageContext.request.contextPath}/logout"
 					method="post">
 					<input type="submit" value="Logout" /> <input type="hidden"
